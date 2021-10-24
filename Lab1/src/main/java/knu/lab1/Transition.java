@@ -14,19 +14,11 @@ public class Transition implements Comparable<Transition> {
     private final Symbol out;
 
     public String getTransition() {
-        return source +
-                ", " +
-                activator.getSymbol() +
-                " --> " +
-                target;
+        return source + " -> " + target + " [label=\"" + activator.getSymbol() + "\"]";
     }
 
     public String getOutput() {
-        return source +
-                ", " +
-                activator.getSymbol() +
-                " --> " +
-                out.getSymbol();
+        return source + " -> " + out.getSymbol() + " [label=\"" + activator.getSymbol() + "\"]";
     }
 
     @Override

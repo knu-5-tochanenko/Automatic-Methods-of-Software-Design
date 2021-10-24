@@ -30,9 +30,14 @@ public class State implements Comparable<State>{
 
     @Override
     public String toString() {
-        if (type == StateType.FINAL) {
-            return "(" + name + ")";
-        }
+        return name;
+    }
+
+    public StateType getType() {
+        return type;
+    }
+
+    public String getName() {
         return name;
     }
 

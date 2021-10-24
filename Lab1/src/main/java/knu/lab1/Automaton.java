@@ -19,6 +19,12 @@ public class Automaton {
         transitions.sort(Transition::compareTo);
         System.out.println("---------- STATES ----------");
         states.values().stream().map(State::toString).forEach(str -> System.out.print(str + " "));
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
         System.out.println();
         System.out.println("---------TRANSITION---------");
         transitions.stream().map(Transition::getTransition).forEach(System.out::println);
@@ -29,12 +35,60 @@ public class Automaton {
     }
 
     public void eliminateEps() {
+        System.out.println("1 ======================================================");
         addInitialStates();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
+        System.out.println("2 ======================================================");
         buildEpsilonTransitionsClosure();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
+        System.out.println("3 ======================================================");
         markNewFinalStates();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
+        System.out.println("4 ======================================================");
         addNewTransitions();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
+        System.out.println("5 ======================================================");
         discardEpsTransitions();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
+        System.out.println("6 ======================================================");
         verify();
+        transitions.stream().map(Transition::getTransition).forEach(System.out::println);
+        states.values().forEach(state -> {
+            if (state.getType() == StateType.FINAL) {
+                System.out.println();
+                System.out.println(state.getName() + " [shape=doublecircle]");
+            }
+        });
     }
 
     // Add new initial states
